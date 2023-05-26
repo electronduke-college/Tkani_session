@@ -17,3 +17,5 @@ C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.
 C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.csproj.CoreCompileInputs.cache
 C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.exe
 C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.pdb
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\ClientPage.g.cs
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\ClientPage.baml

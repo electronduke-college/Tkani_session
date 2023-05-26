@@ -25,15 +25,15 @@
                 <TextBox Name="tbPassword" FontFamily="Comic Sans MS"
                          Width="200"/>
             </StackPanel>
-
-            <Button
-                
+            <Button              
                 Name="btnLogin"
                 Content="Войти"
                 Margin="0 10 0 0"
                 HorizontalAlignment="Center"
                 Style="{StaticResource mainBtn}" Click="btnLogin_Click"
                 />
+            <TextBlock FontFamily="Comic Sans MS" Visibility="Hidden" x:Name="tbTimer"
+                       FontSize="12" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>
