@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Tkani_session.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ClientPage" Background="White">
+      Title="Товары" Background="White" >
 
     <Grid RenderTransformOrigin="0.501,0.495">
         <Grid.RowDefinitions>
@@ -14,11 +14,9 @@
             <RowDefinition Height="79*"/>
         </Grid.RowDefinitions>
         <StackPanel Background="#92d050" Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal">
-
             <Button Style="{StaticResource mainBtn}" Name="btnLogout" Click="btnLogout_Click" >
                 Выйти
             </Button>
-            
             <TextBlock Name="tbUsername" Text="Иванов Иван" 
                        Margin="20 0"                                        
                        FontFamily="Comic Sans MS" FontSize="20" FontWeight="Bold"
@@ -28,48 +26,46 @@
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                 <TextBlock Text="Поиск: " FontFamily="Comic Sans MS" VerticalAlignment="Center"/>
                 <TextBox Name="tbSearch"  Width="200" Height="30" VerticalContentAlignment="Center" TextChanged="tbSearch_TextChanged"/>
-                
-                <TextBlock Text="Фильтр: " FontFamily="Comic Sans MS" VerticalAlignment="Center" Margin="10 0 "/>
-                <ComboBox Name="cbManufacturer"  FontFamily="Comic Sans MS" SelectionChanged="cbManufacturer_SelectionChanged">
-                    <!--<ComboBoxItem IsSelected="True" Content="Все производители" Name="cbItemAll"/>--> 
-                </ComboBox>
-                
 
-                    <TextBlock Text="Сортировка: " FontFamily="Comic Sans MS" VerticalAlignment="Center" Margin="10 0 "/>
+                <TextBlock Text="Фильтр: " FontFamily="Comic Sans MS" VerticalAlignment="Center" Margin="10 0 "/>
+                <ComboBox Name="cbManufacturer"  FontFamily="Comic Sans MS" SelectionChanged="cbManufacturer_SelectionChanged"/>
+
+                <TextBlock Text="Сортировка: " FontFamily="Comic Sans MS" VerticalAlignment="Center" Margin="10 0 "/>
                 <ComboBox Name="cbsort"  FontFamily="Comic Sans MS" SelectionChanged="cbsort_SelectionChanged">
                     <ComboBoxItem Content="По возрастанию стоимости"/>
                     <ComboBoxItem Content="По убыванию стоимости"/>
                 </ComboBox>
+
+                <Button Name="btnOrder" Click="btnOrder_Click" 
+                        Content="Посмотреть заказ" Style="{StaticResource mainBtn}" 
+                        Visibility="Collapsed"
+                        Margin="20 0"/>
             </StackPanel>
             <TextBlock Name="tbCount" FontFamily="Comic Sans MS" DockPanel.Dock="Top"/>
-            <DataGrid 
-            Name="dgProducts"
-            CanUserAddRows="False"
-            CanUserDeleteRows="False"
-            IsReadOnly="True"
-            Margin="10"
-            
-            HorizontalAlignment="Stretch"
-            HorizontalContentAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            VerticalContentAlignment="Stretch"
-            AutoGenerateColumns="False"
-            
-                  >
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Картинка">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate DataType="Image">
+
+            <Button Style="{StaticResource mainBtn}" Click="btnAdd_Click" Content="Добавить товар" 
+                    Name="btnAdd" Visibility="Collapsed" DockPanel.Dock="Bottom"/>
+
+
+            <ListView Name="dgProducts" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ListViewItem BorderBrush="Black">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu Name="addCartMenu" >
+                                        <MenuItem x:Name="btnMenu" Header="Добавить в заказ" Click="AddInOrderItem_Click">
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                                <TextBlock Name="tbProductArticleNumber" Text="{Binding ProductArticleNumber}" Visibility="Collapsed" />
                                 <Image Source="{Binding ProductPhoto}" Width="200"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Описание" MaxWidth="300">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical" Margin="20 10">
+                                <Border Width="1" Margin="2" Background="Black"/>
+                                <StackPanel Orientation="Vertical" Margin="20 10" Width="300">
+
                                     <TextBlock Text="{Binding ProductName}" FontFamily="Comic Sans MS" FontWeight="Bold" TextWrapping="WrapWithOverflow"/>
                                     <TextBlock Text="{Binding ProductDescription}" FontFamily="Comic Sans MS" TextWrapping="WrapWithOverflow"/>
+
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Производитель: " FontFamily="Comic Sans MS" />
                                         <TextBlock Text="{Binding ProductManufacturer}" FontFamily="Comic Sans MS" />
@@ -80,22 +76,23 @@
                                         <TextBlock Text="{Binding ProductCost}" FontFamily="Comic Sans MS" />
                                         <TextBlock Text=" руб." FontFamily="Comic Sans MS" />
                                     </StackPanel>
+                                    <Button Name="btnAddToCard" Click="btnAddToCard_Click" Content="Добавить в заказ" Style="{StaticResource  mainBtn}" Margin="0 5" HorizontalAlignment="Left"/>
                                 </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Наличие на складе" CanUserSort="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate >
-                                <TextBlock Text="{Binding ProductQuantityInStock}" FontFamily="Comic Sans MS" 
+                                <Border Width="1" Margin="2" Background="Black"/>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Кол-во на складе" FontFamily="Comic Sans MS" Margin="20 10"
                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                                    <TextBlock Text="{Binding ProductQuantityInStock}" FontFamily="Comic Sans MS" Margin="20 10"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
 
-                </DataGrid.Columns>
+                                
+                            </StackPanel>
+                        </ListViewItem>
 
-            </DataGrid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </DockPanel>
     </Grid>
 </Page>

@@ -4517,13 +4517,26 @@ SELECT ProductArticleNumber, ProductName, ProductDescription, ProductCategory, P
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ProductArticleNumber, ProductName, ProductDescription, ProductCategory, Pr" +
                 "oductManufacturer, ProductCost, ProductDiscountAmount, ProductQuantityInStock, P" +
                 "roductStatus, ProductPhoto FROM dbo.Product";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"INSERT INTO Product
+                  (ProductName, ProductDescription, ProductCategory, ProductManufacturer, ProductCost, ProductQuantityInStock, ProductDiscountAmount, ProductStatus, ProductPhoto)
+VALUES (@ProductName,@ProductDescription,@ProductCategory,@ProductManufacturer,@ProductCost,@ProductQuantityInStock, @ProductDiscountAmount, '', ''); ";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductName", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductDescription", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductCategory", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ProductCategory", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductManufacturer", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ProductManufacturer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductCost", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 4, "ProductCost", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductQuantityInStock", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantityInStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductDiscountAmount", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDiscountAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4780,6 +4793,61 @@ SELECT ProductArticleNumber, ProductName, ProductDescription, ProductCategory, P
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string ProductName, string ProductDescription, string ProductCategory, string ProductManufacturer, decimal ProductCost, global::System.Nullable<byte> ProductDiscountAmount, int ProductQuantityInStock, string ProductStatus, string ProductPhoto, string Original_ProductArticleNumber, decimal Original_ProductCost, global::System.Nullable<byte> Original_ProductDiscountAmount, int Original_ProductQuantityInStock) {
             return this.Update(Original_ProductArticleNumber, ProductName, ProductDescription, ProductCategory, ProductManufacturer, ProductCost, ProductDiscountAmount, ProductQuantityInStock, ProductStatus, ProductPhoto, Original_ProductArticleNumber, Original_ProductCost, Original_ProductDiscountAmount, Original_ProductQuantityInStock);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(string ProductName, string ProductDescription, string ProductCategory, string ProductManufacturer, decimal ProductCost, int ProductQuantityInStock, global::System.Nullable<byte> ProductDiscountAmount) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((ProductName == null)) {
+                throw new global::System.ArgumentNullException("ProductName");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(ProductName));
+            }
+            if ((ProductDescription == null)) {
+                throw new global::System.ArgumentNullException("ProductDescription");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(ProductDescription));
+            }
+            if ((ProductCategory == null)) {
+                throw new global::System.ArgumentNullException("ProductCategory");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(ProductCategory));
+            }
+            if ((ProductManufacturer == null)) {
+                throw new global::System.ArgumentNullException("ProductManufacturer");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(ProductManufacturer));
+            }
+            command.Parameters[4].Value = ((decimal)(ProductCost));
+            command.Parameters[5].Value = ((int)(ProductQuantityInStock));
+            if ((ProductDiscountAmount.HasValue == true)) {
+                command.Parameters[6].Value = ((byte)(ProductDiscountAmount.Value));
+            }
+            else {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

@@ -1,0 +1,80 @@
+﻿<Page x:Class="Tkani_session.Pages.AddProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tkani_session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="AddProductPage">
+
+    <Grid>
+        <StackPanel>
+            <Button HorizontalAlignment="Left" Margin="10" x:Name="btnBack" Style="{StaticResource mainBtn}" Content="Назад"/>
+        </StackPanel>            
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20">
+            <TextBlock Text="Добавление товара" FontSize="24" HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Наименование: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <TextBox Name="tbProductName" FontFamily="Comic Sans MS"
+                         Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Описание: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <TextBox Name="tbProductDescription" FontFamily="Comic Sans MS"  TextWrapping="Wrap" AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Visible" MaxHeight="100"
+                         Width="200"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Количество на складе: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <TextBox Name="tbProductCount" FontFamily="Comic Sans MS"
+                         Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Категория: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <ComboBox Name="cbCategory" MinWidth="150" FontFamily="Comic Sans MS"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Поставщик: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <TextBox Name="tbProductManufacturer" FontFamily="Comic Sans MS"
+                         Width="200"/>
+            </StackPanel>
+            
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Стоимость за единицу: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <TextBox Name="tbProductPrice" FontFamily="Comic Sans MS"
+                         Width="200"/>
+                <TextBlock Text=" руб." FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <TextBlock Text="Скидка: " FontFamily="Comic Sans MS"
+                       FontSize="20"/>
+                <TextBox Name="tbDiscountAmount" FontFamily="Comic Sans MS" Text="0"
+                         Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 10">
+                <Button Name="btnAddImage" Content="Добавить" Style="{StaticResource mainBtn}" Click="btnAddImage_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -37,6 +37,8 @@ namespace Tkani_session.Pages
             userTable = new UserTableAdapter();
             tbLogin.Text = "1@gmail.com";
             tbPassword.Text = "LdNyos";
+            //tbLogin.Text = "8lf0g@yandex.ru";
+            //tbPassword.Text = "2L6KZG";
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -53,7 +55,9 @@ namespace Tkani_session.Pages
             }
             else
             {
-                this.NavigationService.Navigate(new ClientPage(mainWindow, user));
+                tbLogin.Text = "";
+                tbPassword.Text = "";
+                this.NavigationService.Navigate(new ClientPage(mainWindow, user));       
             }
         }
 

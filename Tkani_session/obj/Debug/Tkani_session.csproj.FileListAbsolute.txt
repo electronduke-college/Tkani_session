@@ -19,3 +19,10 @@ C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.
 C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.pdb
 C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\ClientPage.g.cs
 C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\ClientPage.baml
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\AddProductPage.g.cs
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\AddProductPage.baml
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\bin\Debug\ConfigParser.dll
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\bin\Debug\WakaTime.dll
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\OrderDialog.g.cs
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Pages\OrderDialog.baml
+C:\Users\gpav5\source\repos\Tkani_session\Tkani_session\obj\Debug\Tkani_session.csproj.CopyComplete

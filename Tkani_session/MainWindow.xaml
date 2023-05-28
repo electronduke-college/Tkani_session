@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tkani_session"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Ткани Новосибирск" Height="450" Width="800" Icon="./Images/icon.ico">
     <Grid>
         <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
